@@ -1,0 +1,75 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Social Media Users",
+    "description": "Social Media Users.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/arethasantosa/ASS2/main/socialmedia.csv"
+    },
+    "params": [
+      {
+        "name": "Entity_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "Facebook",
+            "Flickr",
+            "Friendster",
+            "Google Buzz",
+            "Google+",
+            "Hi5",
+            "Instagram",
+            "MySpace",
+            "Orkut",
+            "Pinterest",
+            "Reddit",
+            "Snapchat",
+            "Tiktok",
+            "Tumblr",
+            "Twitter",
+            "WeChat",
+            "Weibo",
+            "Whatsapp",
+            "YouTube"
+          ],
+          "labels": [
+            "Show All",
+            "Facebook",
+            "Flickr",
+            "Friendster",
+            "Google Buzz",
+            "Google+",
+            "Hi5",
+            "Instagram",
+            "MySpace",
+            "Orkut",
+            "Pinterest",
+            "Reddit",
+            "Snapchat",
+            "Tiktok",
+            "Tumblr",
+            "Twitter",
+            "WeChat",
+            "Weibo",
+            "Whatsapp",
+            "YouTube"
+          ],
+          "name": "Application Selection: "
+        }
+      }
+    ],
+    "transform": [
+      {"filter": "Entity_selection == null || datum.Entity == Entity_selection"}
+    ],
+    "mark": {"type": "line", "point": true},
+    "encoding": {
+      "x": {"field": "Year", "type": "nominal"},
+      "y": {"field": "Users", "type": "quantitative"},
+      "color": {"field": "Entity", "type": "nominal"},
+      "tooltip": [
+        {"field": "Entity", "type": "nominal", "title": "Application"},
+        {"field": "Year", "type": "quantitative"},
+        {"field": "Users", "type": "quantitative", "format": ","}
+      ]
+    }
+  }
